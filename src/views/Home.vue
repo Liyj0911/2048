@@ -1,18 +1,30 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <section>
+        <BoardView></BoardView>
+    </section>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+    /**
+     * 首页
+     *
+     * @date 2020/4/20
+     * @author Goppy
+     */
+    import BoardView from '../components/BoardView'
+    export default {
+        name: 'Home',
+        data () {
+            return {}
+        },
+        components: {
+            BoardView
+        },
+        mounted () {
+        },
+        methods: {}
+    }
 </script>
+
+<style scoped lang="scss">
+</style>
