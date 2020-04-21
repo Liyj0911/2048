@@ -1,26 +1,30 @@
 <template>
-    <div class="board" tabIndex="1">
-        <div v-for="r_item in board.cells" :key="r_item.id">
-            <cell v-for="c_item in r_item" :key="c_item.id"></cell>
+    <div class="game" tabIndex="1">
+        <div v-for="row_item in game.cells" :key="row_item.id">
+            <TheCell v-for="col_item in row_item" :key="col_item.id"></TheCell>
         </div>
-        <tile-view v-for="tile in tiles" :tile="tile" :key="tile.id">
-        </tile-view>
-        <game-end-overlay :board="board" :onrestart="onRestart"></game-end-overlay>
-        得分{{board.score}}
+        <TheTile v-for="tile in tiles" :tile="tile" :key="tile.id"></TheTile>
+        <GameEnd :game="game" :onRestart="onRestart"></GameEnd>
+        得分{{game.score}}
     </div>
 </template>
 
 <script>
-    import Cell from './Cell.vue'
-    import TileView from './TileView.vue'
-    import GameEndOverlay from './GameEndOverlay.vue'
-    import Board from '../board'
+    import TheCell from './TheCell.vue'
+    import TheTile from './TheTile.vue'
+    import GameEnd from './GameEnd.vue'
+    import Game from '../game'
 
     export default {
         data () {
             return {
-                board: new Board()
+                game: new Game()
             }
+        },
+        components: {
+            TheCell,
+            TheTile,
+            GameEnd
         },
         mounted () {
             window.addEventListener('keydown', this.handleKeyDown.bind(this))
@@ -30,29 +34,24 @@
         },
         computed: {
             tiles () {
-                return this.board.tiles
+                return this.game.tiles
                     .filter(tile => tile.value !== 0)
             }
         },
         methods: {
             handleKeyDown (event) {
-                if (this.board.hasWon()) {
+                if (this.game.hasWon()) {
                     return
                 }
                 if (event.keyCode >= 37 && event.keyCode <= 40) {
                     event.preventDefault()
                     var direction = event.keyCode - 37
-                    this.board.move(direction)
+                    this.game.move(direction)
                 }
             },
             onRestart () {
-                this.board = new Board()
+                this.game = new Game()
             }
-        },
-        components: {
-            Cell,
-            TileView,
-            GameEndOverlay
         }
     }
 </script>

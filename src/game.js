@@ -43,7 +43,7 @@ class Tile {
     }
 }
 
-class Board {
+class Game {
     constructor () {
         this.tiles = []
         this.cells = []
@@ -183,4 +183,4 @@ class Board {
     }
 }
 
-export default Board
+export default Game

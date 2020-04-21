@@ -20,7 +20,7 @@ body {
   font-weight: bold;
 }
 
-.board {
+.game {
   order: 1;
   width: 440px;
   height: 440px;
@@ -31,7 +31,7 @@ body {
   position: relative;
 }
 
-.board .cell, .tile {
+.game .cell, .tile {
   user-select: none;
   cursor: default;
 }
@@ -161,7 +161,7 @@ body {
   border-radius: 7px;
 }
 
-.tryAgain {
+.play-again {
   background-color: #876;
   color: #fff;
   height: 40px;

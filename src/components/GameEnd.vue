@@ -1,7 +1,7 @@
 <template>
     <div class="overlay" v-show="show">
         <p class="message">{{contents}}</p>
-        <button class="tryAgain" @click="restart">Try again</button>
+        <button class="play-again" @click="restart">再玩一次</button>
     </div>
 </template>
 
@@ -12,24 +12,24 @@
             return {}
         },
         props: {
-            board: {
+            game: {
                 type: Object,
                 required: true
             },
-            onrestart: {
+            onRestart: {
                 type: Function,
                 required: true
             }
         },
         computed: {
             show () {
-                return this.board.hasWon() || this.board.hasLost()
+                return this.game.hasWon() || this.game.hasLost()
             },
             contents () {
-                if (this.board.hasWon()) {
-                    return 'Good Job!'
-                } else if (this.board.hasLost()) {
-                    return 'Game Over'
+                if (this.game.hasWon()) {
+                    return '2048 完成！'
+                } else if (this.game.hasLost()) {
+                    return '游戏结束'
                 } else {
                     return ''
                 }
@@ -38,7 +38,7 @@
 
         methods: {
             restart () {
-                this.onrestart && this.onrestart()
+                this.onRestart && this.onRestart()
             }
         },
         components: {}

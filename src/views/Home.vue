@@ -1,6 +1,6 @@
 <template>
     <section>
-        <BoardView></BoardView>
+        <TheGame></TheGame>
     </section>
 </template>
 
@@ -11,14 +11,14 @@
      * @date 2020/4/20
      * @author Goppy
      */
-    import BoardView from '../components/BoardView'
+    import TheGame from '../components/TheGame'
     export default {
         name: 'Home',
         data () {
             return {}
         },
         components: {
-            BoardView
+            TheGame
         },
         mounted () {
         },
